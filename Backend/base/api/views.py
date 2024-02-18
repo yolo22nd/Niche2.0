@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 # from .serializers import UserSerializer
+from django.contrib.auth import get_user_model
+
 
 
 
@@ -35,13 +37,16 @@ def getRoutes(request):
 
 @api_view(['POST'])
 def registerUser(request):
-    if request.method == 'POST': 
+    if request.method == 'POST':
         first_name = request.data.get('first_name')
         last_name = request.data.get('last_name')
         password = request.data.get('password')
         username = request.data.get('email')
         email = request.data.get('email')
         data = request.data.copy()  # Make a copy of the request data
+
+
+        User = get_user_model()
 
 
         if User.objects.filter(email=email).exists():
@@ -54,6 +59,7 @@ def registerUser(request):
         # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         user = User.objects.create_user (username,first_name=first_name,last_name=last_name ,email=email, password=password)
+        user.is_active=True
         user.save()
 
         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
