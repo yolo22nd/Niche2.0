@@ -36,7 +36,7 @@ def get_stocks_by_risk(request):
 
             # Filter stocks based on the requested risk level
             matching_stocks = [stock for stock in stocks_data if stock.get('risk') == requested_risk]
-
+            first_50=matching_stocks[:50]
             return JsonResponse(matching_stocks, safe=False)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON format in request body'}, status=400)
