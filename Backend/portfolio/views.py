@@ -102,7 +102,7 @@ def check_stop_loss(request):
         portfolio = Portfolio.objects.get(user=user)
         assets = Asset.objects.filter(portfolio=portfolio)
         for asset in assets:
-            if asset.purchase_price > stop_loss_level:
+            if asset.price > stop_loss_level:
                 send_mail(
                     'Stop Loss Alert',
                     f'The price of {asset.name} in your portfolio has fallen below the stop-loss level.',

@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('asset_type', models.CharField(max_length=200)),
                 ('quantity', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('purchase_price', models.DecimalField(decimal_places=2, max_digits=10)),
+                ('  _price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('purchase_date', models.DateField()),
                 ('stop_loss_level', models.FloatField(blank=True, default=None, null=True)),
             ],

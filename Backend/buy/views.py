@@ -39,14 +39,14 @@ def buyStock(request):
                 asset1= Asset.objects.create(
                     name=stock_name,
                     quantity=quantity,
-                    purchase_price=float(stock_object['price']),
+                    price=float(stock_object['price']),
                     purchase_date=timezone.now(),  # Assuming the purchase date is the current date/time
                     portfolio=portfolio
                 )
                 asset = {
                     'name': stock_name,
                     'quantity': quantity,
-                    'purchase_price': stock_object['price'],
+                    'price': stock_object['price'],
                     'purchase_date': timezone.now().isoformat(),  # Convert datetime to ISO format
                     'graph':stock_object['graph']
                 }

@@ -21,7 +21,7 @@ class Asset(models.Model):
     name = models.CharField(max_length=200)
     asset_type = models.CharField(max_length=200)
     quantity = models.DecimalField(max_digits=10, decimal_places=2)
-    purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     purchase_date = models.DateField()
     stop_loss_level = models.FloatField(default=None, null=True, blank=True)
     portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
